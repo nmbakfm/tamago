@@ -10,8 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet var niwatori: UIButton!
-    
-    
     // Load Defaults
     let defaults = NSUserDefaults.standardUserDefaults()
     var eggCount: Int = NSUserDefaults.standardUserDefaults().integerForKey("eggCount")
@@ -21,6 +19,9 @@ class ViewController: UIViewController {
     let niwatori_highlight_image = UIImage(named: "niwatori_born") as UIImage
     
     var niwatori_normal_image_count = 0
+    
+    // Egg Image
+    let egg_image = UIImage(named: "egg_01")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +38,12 @@ class ViewController: UIViewController {
     
     @IBAction func countUp(sender: UIButton) {
         ++eggCount
-        defaults.setInteger(eggCount, forKey: "eggCount")
-        println(eggCount)
+        var new_egg_x = CGFloat(eggCount * 40)
+        println(30+new_egg_x)
+        var new_egg = UIButton(frame: CGRectMake(100+new_egg_x, 200, 60, 90))
+        new_egg.setImage(egg_image, forState: .Normal)
+        self.view.addSubview(new_egg)
+        defaults.setInteger(0, forKey: "eggCount")
     }
     
     func updateHen(){
