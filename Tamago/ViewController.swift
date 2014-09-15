@@ -22,12 +22,14 @@ class ViewController: UIViewController {
     
     // Egg Image
     let egg_image = UIImage(named: "egg_01")
+    let egg_image_width:CGFloat = 60
+    let egg_image_height:CGFloat = 90
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // setup Niwatori
-        var timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("updateHen"), userInfo: nil, repeats: true) // set Niwatori Animation
+        var timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("updateNiwatori"), userInfo: nil, repeats: true) // set Niwatori Animation
         niwatori.setImage(niwatori_highlight_image, forState: .Highlighted) // set Niwatori Image when Tapped
     }
 
@@ -39,16 +41,28 @@ class ViewController: UIViewController {
     @IBAction func countUp(sender: UIButton) {
         ++eggCount
         var new_egg_x = CGFloat(eggCount * 40)
-        println(30+new_egg_x)
-        var new_egg = UIButton(frame: CGRectMake(100+new_egg_x, 200, 60, 90))
+        var new_egg_image_x = niwatori.frame.origin.x+niwatori.frame.size.width/2-egg_image_width/2
+        var new_egg_image_y = niwatori.frame.origin.y+niwatori.frame.size.height/2-egg_image_height/2
+        var new_egg = UIButton(frame: CGRectMake(new_egg_image_x, new_egg_image_y, new_egg_image_x/2, new_egg_image_y/2))
         new_egg.setImage(egg_image, forState: .Normal)
+        new_egg.addTarget(self, action: "eggBreak:", forControlEvents: .TouchUpInside)
+        var timer = NSTimer.scheduledTimerWithTimeInterval(0.08, target: self, selector: Selector("updateTamago"), userInfo: nil, repeats: true)
         self.view.addSubview(new_egg)
+        self.view.bringSubviewToFront(niwatori)
         defaults.setInteger(0, forKey: "eggCount")
     }
     
-    func updateHen(){
+    func eggBreak(sender: AnyObject){
+        println("break")
+    }
+    
+    func updateNiwatori(){
         niwatori_normal_image_count = (niwatori_normal_image_count+1)%2
         niwatori.setImage(niwatori_normal_image[niwatori_normal_image_count], forState: .Normal)
+    }
+    
+    func updateTamago(sender: UIButton){
+        println("test")
     }
 }
 
