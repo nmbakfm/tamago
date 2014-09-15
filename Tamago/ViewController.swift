@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet var niwatori: UIButton!
-    @IBOutlet var eggCountDisplay: UILabel!
     
     
     // Load Defaults
@@ -26,9 +25,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // set egg count
-        eggCountDisplay.text = String(eggCount)
-        
         // setup Niwatori
         var timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("updateHen"), userInfo: nil, repeats: true) // set Niwatori Animation
         niwatori.setImage(niwatori_highlight_image, forState: .Highlighted) // set Niwatori Image when Tapped
@@ -41,7 +37,6 @@ class ViewController: UIViewController {
     
     @IBAction func countUp(sender: UIButton) {
         ++eggCount
-        eggCountDisplay.text = String(eggCount)
         defaults.setInteger(eggCount, forKey: "eggCount")
         println(eggCount)
     }

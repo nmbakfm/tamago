@@ -397,6 +397,7 @@
 				214DFC6F19C6BC1C0083916B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		214DFC7019C6BC1C0083916B /* Build configuration list for PBXNativeTarget "TamagoTests" */ = {
 			isa = XCConfigurationList;
@@ -405,6 +406,7 @@
 				214DFC7219C6BC1C0083916B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

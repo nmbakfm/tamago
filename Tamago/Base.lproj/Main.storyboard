@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.9" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
+        <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,31 +17,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="QnL-a4-q51">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdC-LT-Jei">
-                                <rect key="frame" x="139" y="134" width="322" height="332"/>
+                                <rect key="frame" x="0.0" y="268" width="322" height="332"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
                                 </accessibility>
-                                <state key="normal" image="niwatori_test"/>
+                                <state key="normal" image="niwatori_01"/>
                                 <connections>
                                     <action selector="countUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WEa-Wl-nr6"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myF-Q6-YB2">
-                                <rect key="frame" x="139" y="450" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="JdC-LT-Jei" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="0VJ-qH-A5w"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QnL-a4-q51" secondAttribute="bottom" id="Gtb-tC-skv"/>
+                            <constraint firstItem="JdC-LT-Jei" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="Hgb-La-w8a"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JdC-LT-Jei" secondAttribute="bottom" constant="50" id="TQd-Se-7FX"/>
                             <constraint firstAttribute="centerX" secondItem="JdC-LT-Jei" secondAttribute="centerX" id="Wg5-ia-n2w"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JdC-LT-Jei" secondAttribute="bottom" id="fgi-e0-zvT"/>
                             <constraint firstAttribute="centerY" secondItem="JdC-LT-Jei" secondAttribute="centerY" id="jyb-ML-QR7"/>
+                            <constraint firstItem="JdC-LT-Jei" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qN9-IE-ipj"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0VJ-qH-A5w"/>
+                                <exclude reference="Wg5-ia-n2w"/>
+                                <exclude reference="jyb-ML-QR7"/>
+                                <exclude reference="qN9-IE-ipj"/>
+                                <exclude reference="fgi-e0-zvT"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="eggCountDisplay" destination="myF-Q6-YB2" id="6dz-V5-mXS"/>
                         <outlet property="niwatori" destination="JdC-LT-Jei" id="Z42-3Z-Mab"/>
                     </connections>
                 </viewController>
@@ -50,6 +62,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="niwatori_test" width="267" height="332"/>
+        <image name="bg" width="568" height="320"/>
+        <image name="niwatori_01" width="134" height="167"/>
     </resources>
 </document>
