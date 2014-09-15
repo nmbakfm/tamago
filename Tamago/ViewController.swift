@@ -12,21 +12,26 @@ class ViewController: UIViewController {
     @IBOutlet var niwatori: UIButton!
     @IBOutlet var eggCountDisplay: UILabel!
     
-    var i = 0
     
-    var eggCount: UInt = 0
+    // Load Defaults
+    let defaults = NSUserDefaults.standardUserDefaults()
+    var eggCount: Int = NSUserDefaults.standardUserDefaults().integerForKey("eggCount")
     
+    // Niwatori Images
     let niwatori_normal_image = [UIImage(named: "niwatori_01") as UIImage,UIImage(named: "niwatori_02") as UIImage]
     let niwatori_highlight_image = UIImage(named: "niwatori_born") as UIImage
     
+    var niwatori_normal_image_count = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        niwatori.tintColor = UIColor.whiteColor()
-        eggCount = 0
+        
+        // set egg count
         eggCountDisplay.text = String(eggCount)
-        var timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("updateHen"), userInfo: nil, repeats: true)
-        niwatori.setImage(niwatori_highlight_image, forState: .Highlighted)
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // setup Niwatori
+        var timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("updateHen"), userInfo: nil, repeats: true) // set Niwatori Animation
+        niwatori.setImage(niwatori_highlight_image, forState: .Highlighted) // set Niwatori Image when Tapped
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,12 +42,13 @@ class ViewController: UIViewController {
     @IBAction func countUp(sender: UIButton) {
         ++eggCount
         eggCountDisplay.text = String(eggCount)
+        defaults.setInteger(eggCount, forKey: "eggCount")
         println(eggCount)
     }
     
     func updateHen(){
-        i = (i+1)%2
-        niwatori.setImage(niwatori_normal_image[i], forState: .Normal)
+        niwatori_normal_image_count = (niwatori_normal_image_count+1)%2
+        niwatori.setImage(niwatori_normal_image[niwatori_normal_image_count], forState: .Normal)
     }
 }
 
