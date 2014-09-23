@@ -67,7 +67,7 @@ class ViewController: UIViewController {
                     options: .CurveLinear,
                     animations: {
                         new_egg.transform = CGAffineTransformMakeRotation(3.14)
-                        new_egg.frame.origin.x = 190
+                        new_egg.frame.origin.x += 30
                     },
                     completion:{
                         (value: Bool) in
@@ -77,7 +77,8 @@ class ViewController: UIViewController {
                             options: .CurveEaseOut,
                             animations: {
                                 new_egg.transform = CGAffineTransformMakeRotation(6.27)
-                                new_egg.frame.origin.x = 220
+                                new_egg.frame.origin.x += 30
+                                
                             },
                             completion:nil
                         )
